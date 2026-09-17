@@ -1,0 +1,74 @@
+local config_dir = (os.getenv("HOME") or "") .. "/.config/hypr"
+package.path = table.concat({
+    config_dir .. "/?.lua",
+    config_dir .. "/?/init.lua",
+    package.path,
+}, ";")
+
+-- Clear cached modules so they re-execute on reload (ensures binds/rules re-register)
+for _, mod in ipairs({"monitors", "inputs", "keybind", "windowrules", "animations", "themes.theme"}) do
+    package.loaded[mod] = nil
+end
+
+require("monitors")
+require("startup")
+require("inputs")
+require("keybind")
+require("windowrules")
+require("animations")
+require("themes.theme")
+
+hl.config({
+    dwindle = {
+        preserve_split = true,
+    },
+    master = {
+        new_status = "master",
+    },
+    misc = {
+        vrr = 0,
+        disable_hyprland_logo = true,
+        disable_splash_rendering = true,
+        force_default_wallpaper = 0,
+        anr_missed_pings = 5,
+        allow_session_lock_restore = true,
+    },
+    xwayland = {
+        force_zero_scaling = true,
+    },
+    general = {
+        snap = {
+            enabled = true,
+        },
+    },
+})
+
+decoration = {
+    rounding = 10,
+
+    blur = {
+        enabled = true,
+        size = 5,
+        passes = 2,
+    },
+}
+
+hl.window_rule({
+    match = { class = "code" },
+    opacity = "0.88 override 0.75 override",
+})
+
+hl.window_rule({
+    match = { class = "thunar" },
+    opacity = "0.88 override 0.75 override",
+})
+
+hl.window_rule({
+    match = { class = "Spotify" },
+    opacity = "0.88 override 0.75 override",
+})
+
+
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()

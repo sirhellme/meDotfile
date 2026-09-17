@@ -1,0 +1,33 @@
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+
+    HYPRCURSOR_THEME "Bibata-Modern-Classic"
+    HYPRCURSOR_SIZE "24"
+    XCURSOR_THEME "Bibata-Modern-Classic"
+    XCURSOR_SIZE "24"
+    QT_CURSOR_THEME "Bibata-Modern-Classic"
+    QT_CURSOR_SIZE "24"
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Classic" // Replace with your theme name
+    xcursor-size 22               // Set your desired size
+}
+
+hotkey-overlay {
+    // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
+     skip-at-startup
+}
+
+spawn-at-startup "noctalia"
+spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
+spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
+spawn-sh-at-startup "QT_QPA_PLATFORMTHEME=gtk3 qs -c ~/.config/quickshell/noctalia-shell"
+spawn-sh-at-startup "pkill -9 wl-paste; /usr/bin/wl-paste --watch /usr/bin/cliphist store"
+spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
+

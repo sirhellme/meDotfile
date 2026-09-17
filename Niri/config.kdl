@@ -1,0 +1,53 @@
+include "modules/monitors.kdl"
+include "modules/inputs.kdl"
+include "modules/startup.kdl"
+include "modules/keybinds.kdl"
+include "modules/window-rules.kdl"
+include "theme/theme.kdl"
+
+layer-rule {
+  match namespace="^noctalia-overview*"
+  place-within-backdrop true 
+}
+
+layer-rule {
+  match namespace="^noctalia-(background|launcher-overlay|dock)-.*$"
+  background-effect {
+    xray false
+  }
+}
+
+prefer-no-csd
+
+layout {
+    gaps 10
+
+    struts {
+
+    }
+
+    focus-ring {
+        width 1
+        active-color "#b8cf8f"
+        inactive-color "#555555"
+    }
+
+    border {
+        width 1
+    }
+
+    shadow {
+        off
+    }
+}
+
+blur {
+    passes 3 
+    offset 3
+    noise 0.02
+    saturation 1.0
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot-%Y%m%d-%H%M%S.png"
+
+include "noctalia.kdl"

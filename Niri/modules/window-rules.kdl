@@ -1,0 +1,51 @@
+window-rule {
+    geometry-corner-radius 10 
+    clip-to-geometry true
+    opacity 1.00
+
+    background-effect  {
+      blur false
+      xray false
+    }
+}
+
+window-rule {
+  match app-id="thunar"
+  geometry-corner-radius 10
+  clip-to-geometry true
+  opacity 0.85
+
+  background-effect {
+    blur true
+  }
+}
+window-rule {
+  match app-id="kitty"
+  geometry-corner-radius 10
+  clip-to-geometry true
+  opacity 0.85
+
+  background-effect {
+    blur true
+  }
+}
+window-rule {
+  match app-id="code"
+  geometry-corner-radius 10
+  clip-to-geometry true
+  opacity 0.85
+
+  background-effect {
+    blur true
+  }
+}
+window-rule {
+  match app-id="spotify"
+  geometry-corner-radius 10
+  clip-to-geometry true
+  opacity 0.85
+
+  background-effect {
+    blur true
+  }
+}
