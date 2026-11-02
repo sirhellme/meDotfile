@@ -1,0 +1,26 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  Noctalia bar — visual overrides
+#  Noctalia settings are state, not ~/.config: merge these keys under the
+#  matching [shell] / [bar.default] tables in
+#  ~/.local/state/noctalia/settings.toml, or use the
+#  `noctalia msg config-set ...` commands in CHANGELOG.md.
+#
+#  Values chosen to match the rest of the rice:
+#    radius 10 / border 1  → same geometry as niri windows and fuzzel
+#    shell font JetBrains  → same font as kitty/fuzzel
+#    border "primary"      → palette accent instead of a neutral outline
+#    opacity 0.55          → more legible than 0.38, still glassy
+#  No new process or blur pass is introduced.
+# ═══════════════════════════════════════════════════════════════════════════
+
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+
+[bar.default]
+radius = 10
+capsule_radius = 10
+border = "primary"
+border_width = 1.0
+font_scale = 1.0
+font_weight = 500
+background_opacity = 0.55

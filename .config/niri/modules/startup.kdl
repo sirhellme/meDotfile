@@ -1,0 +1,40 @@
+// ═══════════════════════════════════════════════════════════════════════════
+//  Session environment and autostart
+//  No new daemons are introduced here; every entry was already present.
+// ═══════════════════════════════════════════════════════════════════════════
+
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
+
+    // Bibata cursor, shared with the Hyprland session when it exists.
+    HYPRCURSOR_THEME "Bibata-Modern-Classic"
+    HYPRCURSOR_SIZE "16"
+    XCURSOR_THEME "Bibata-Modern-Classic"
+    XCURSOR_SIZE "16"
+    QT_CURSOR_THEME "Bibata-Modern-Classic"
+    QT_CURSOR_SIZE "16"
+}
+
+cursor {
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 16
+}
+
+// Skip the "Important Hotkeys" popup at login.
+hotkey-overlay {
+    skip-at-startup
+}
+
+// ── Autostart ──────────────────────────────────────────────────────────────
+spawn-at-startup "noctalia"
+spawn-at-startup "gnome-keyring-daemon" "--start" "--components=secrets"
+spawn-at-startup "wl-clip-persist" "--clipboard" "regular"
+spawn-sh-at-startup "pkill -9 wl-paste; /usr/bin/wl-paste --watch /usr/bin/cliphist store"
+spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
+spawn-at-startup "skwd-walld"

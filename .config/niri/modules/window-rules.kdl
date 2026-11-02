@@ -1,0 +1,70 @@
+// ═══════════════════════════════════════════════════════════════════════════
+//  Window rules
+//  One global rule owns geometry + clipping for every window. App rules only
+//  add opacity and blur, so radius/clip are defined exactly once.
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Global geometry: medium corners (10px) matching fuzzel and the Noctalia bar.
+window-rule {
+    geometry-corner-radius 10
+    clip-to-geometry true
+
+    background-effect {
+        xray false
+    }
+}
+
+// ── Glassy apps ────────────────────────────────────────────────────────────
+window-rule {
+    match app-id="kitty"
+    opacity 0.65
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="thunar"
+    opacity 0.75
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="md.obsidian.Obsidian"
+    opacity 0.75
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="code"
+    opacity 0.85
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="antigravity-ide"
+    opacity 0.85
+
+    background-effect {
+        blur true
+    }
+}
+
+window-rule {
+    match app-id="spotify"
+    opacity 0.85
+
+    background-effect {
+        blur true
+    }
+}
